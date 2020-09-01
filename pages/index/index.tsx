@@ -10,6 +10,7 @@ import wrapper from '../../store/configureStore';
 import Display from '../../components/Display';
 import Controller from '../../components/Controller';
 import store from '../../observavles/store';
+import SelfObserve from '../../components/SelfObserve';
 
 interface SageStore extends Store {
 	sagaTask: {
@@ -48,6 +49,7 @@ const Main: NextPage<Props> = ({ data }) => {
 				<Display />
 				<Controller />
 			</div>
+			<SelfObserve />
 		</>
 	);
 };
