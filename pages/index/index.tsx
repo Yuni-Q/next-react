@@ -7,6 +7,9 @@ import {Store} from 'redux';
 import {END} from 'redux-saga';
 import {loadUser} from '../../actions';
 import wrapper from '../../store/configureStore';
+import Display from '../../components/Display';
+import Controller from '../../components/Controller';
+import store from '../../observavles/store';
 
 interface SageStore extends Store {
 	sagaTask: {
@@ -17,6 +20,10 @@ interface SageStore extends Store {
 interface Props {
 	data: number;
 }
+
+setInterval(() => {
+	store.count += 1;
+}, 1000)
 
 const Main: NextPage<Props> = ({ data }) => {
 	const user = useSelector((state: any) => state.user);
@@ -31,6 +38,15 @@ const Main: NextPage<Props> = ({ data }) => {
 						posts로 이동
 					</a>
 				</Link>
+			</div>
+			<div style={{
+				display: 'flex',
+				flexDirection: 'column',
+				justifyContent: 'center',
+				alignItems: 'center',
+			}}>
+				<Display />
+				<Controller />
 			</div>
 		</>
 	);
