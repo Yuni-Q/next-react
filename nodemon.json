@@ -4,6 +4,6 @@
     "server.local.ts",
     "nodemon.json"
   ],
-  "exec": "node -r esm -r ts-node/register server.local.ts",
+  "exec": "node server.local.js",
   "ext": "js json jsx ts tsx"
 }

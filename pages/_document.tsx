@@ -12,10 +12,10 @@ interface Props {
 	head?: (JSX.Element | null)[] | undefined;
 }
 
-type getInitialPropsRuturnType = RenderPageResult | Props;
+type getInitialPropsReturnType = RenderPageResult | Props;
 
 export default class CustomDocument extends Document<Props> {
-	static async getInitialProps(context: DocumentContext): Promise<getInitialPropsRuturnType>{
+	static async getInitialProps(context: DocumentContext): Promise<getInitialPropsReturnType> {
 		const sheet = new ServerStyleSheet();
 		const originalRenderPage = context.renderPage;
 		try {
@@ -40,7 +40,7 @@ export default class CustomDocument extends Document<Props> {
 			};
 		} catch (error) {
 			consoleError('CustomDocument Error', error);
-			throw new Error('CustomDocument Error')
+			throw new Error('CustomDocument Error');
 		} finally {
 			sheet.seal();
 		}
@@ -50,12 +50,11 @@ export default class CustomDocument extends Document<Props> {
 		const { htmlAttributes, bodyAttributes, ...helmet } = this.props.helmet;
 		const htmlAttrs = htmlAttributes.toComponent();
 		const bodyAttrs = bodyAttributes.toComponent();
-		
+
 		return (
 			<Html lang="en" dir="ltr" {...htmlAttrs}>
 				<Head>
 					{this.props.styles}
-					{/* <title>MOTI</title> */}
 					<meta charSet="utf-8" />
 					<meta httpEquiv="x-ua-compatible" content="ie=edge" />
 					<meta name="description" content="yuni-q" />
@@ -74,16 +73,15 @@ export default class CustomDocument extends Document<Props> {
 					{/* CODELAB: Add iOS meta tags and icons */}
 					<meta name="apple-mobile-web-app-capable" content="yes" />
 					<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-					<meta name="apple-mobile-web-app-title" content="MOTI" />
+					<meta name="apple-mobile-web-app-title" content="yuni-q" />
 					<link rel="apple-touch-icon" href="/favicon.png" />
-
 				</Head>
 				<body {...bodyAttrs}>
 					<Main />
 					{process.env.NODE_ENV === 'production' && (
 						<>
-						<script src="/regist.js" />
-						<script src="https://polyfill.io/v3/polyfill.min.js?features=es6,es7,es8,es9,NodeList.prototype.forEach&flags=gated" />
+							<script src="/regist.js" />
+							<script src="https://polyfill.io/v3/polyfill.min.js?features=es6,es7,es8,es9,NodeList.prototype.forEach&flags=gated" />
 						</>
 					)}
 					<NextScript />

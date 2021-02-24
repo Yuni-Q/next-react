@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { BoxModel, Half, MarginAndPadding } from './BoxModel';
+import boxModel from './BoxModel';
 import Color from './Color';
 import { frameMaxWidthSmall, frameMaxWidthXsmall } from './Layout';
 import Typo from './Typo';
@@ -7,26 +7,22 @@ import Typo from './Typo';
 const GlobalStyle = createGlobalStyle`
   ${Color}
   ${Typo}
-  ${Half}
   
   *:focus {
     outline: none;
   }
 
-  ${MarginAndPadding()}
-  ${BoxModel()}
+  ${boxModel()}
   @media (max-width: ${frameMaxWidthSmall}) {
     .m-img {
       max-width: 100%;
       width: 100% !important;
       height: auto !important;
     }
-    ${MarginAndPadding('-sm')}
-    ${BoxModel('-sm')}
+    ${boxModel('-sm')}
   }
   @media (max-width: ${frameMaxWidthXsmall}) {
-    ${MarginAndPadding('-xs')}
-    ${BoxModel('-xs')}
+    ${boxModel('-xs')}
   }
 
   html, body {

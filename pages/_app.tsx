@@ -8,10 +8,9 @@ import Loading from '../components/Loading';
 import GlobalStyle from '../components/style/GlobalStyle';
 import { log } from '../utils/log';
 
-
 Router.events.on('routeChangeStart', (url: string) => {
 	log('routeChangeStart');
-	log(`Loading: ${url}`)
+	log(`Loading: ${url}`);
 });
 
 Router.events.on('beforeHistoryChange', () => {
@@ -24,7 +23,7 @@ Router.events.on('routeChangeComplete', () => {
 
 Router.events.on('routeChangeError', () => {
 	log('routeChangeError');
-})
+});
 
 interface Props {
 	Component: NextComponentType<NextPageContext>;
@@ -64,14 +63,14 @@ MyApp.getInitialProps = async (context) => {
 			ctx,
 			res,
 		};
-		pageProps = await context.Component.getInitialProps(obj as unknown as NextPageContext) as PageContext;
+		pageProps = (await context.Component.getInitialProps((obj as unknown) as NextPageContext)) as PageContext;
 	}
 	return { pageProps, isServer };
 };
 
 export interface PageContext extends NextPageContext {
 	params: {
-		id?: string
+		id?: string;
 	};
 }
 
