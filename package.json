@@ -29,7 +29,7 @@
 		"dayjs": "^1.9.6",
 		"dotenv": "^8.2.0",
 		"dotenv-webpack": "^2.0.0",
-		"express": "^4.17.1",
+		"express": "^4.17.3",
 		"file-loader": "^6.2.0",
 		"immer": "^7.0.1",
 		"morgan": "^1.9.1",
